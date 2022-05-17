@@ -8,14 +8,14 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 const cookieSession = require('cookie-session');
-const methodOverride = require('method-override')
+const methodOverride = require('method-override');
 
 
 // Cookies
 app.use(cookieSession({
   name: 'session',
   keys: ["key1", "key2"],
-}))
+}));
 app.use(methodOverride('_method'));
 
 
@@ -51,9 +51,9 @@ app.use(express.static("public"));
 const moment = require("moment");
 
 app.use((req, res, next)=>{
-    res.locals.moment = moment;
-    next();
-  });
+  res.locals.moment = moment;
+  next();
+});
 
 
 // Separated Routes for each Resource
@@ -98,7 +98,7 @@ app.use("/search", searchRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.render("example");
+  res.render("login");
 });
 
 app.listen(PORT, () => {
